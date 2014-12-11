@@ -46,7 +46,7 @@ pa1_breaks <- c(-3000, 0, 3000, 6000, 9000, 12000, 15000, 18000, 21000, 24000, 2
 g1 <- ggplot(NULL, aes(x=pa1_data_day))
 g1 <- g1 + geom_histogram(binwidth = 3000, colour = "white")
 g1 <- g1 + scale_x_continuous(breaks = pa1_breaks)
-g1 <- g1 + xlab("Total number of steps per day")
+g1 <- g1 + xlab("Total  number of steps per day ")
 g1
 ```
 
@@ -74,7 +74,7 @@ Make line plot
 
 ```r
 g2 <- ggplot(NULL, aes(x = as.numeric(names(pa1_data_averageint)), y=pa1_data_averageint,))
-g2 <- g2 + geom_line() + xlab("Interval") +  ylab("Average number of steps")
+g2 <- g2 + geom_line() + xlab("Interval") +  ylab("Average  number of steps")
 g2 <- g2 + scale_x_continuous(breaks = seq(0, 2400, by = 200))
 g2
 ```
@@ -122,7 +122,7 @@ pa1_data2_day <- tapply(pa1_data2$steps, pa1_data2$date, sum, na.rm = TRUE)
 g3 <- ggplot(NULL, aes(x=pa1_data2_day))
 g3 <- g3 + geom_histogram(binwidth = 3000, colour = "white")
 g3 <- g3 + scale_x_continuous(breaks = pa1_breaks)
-g3 <- g3 + xlab("Total number of steps per day, NA replaced")
+g3 <- g3 + xlab("Total number  of steps per day, NA replaced ")
 g3
 ```
 
@@ -138,7 +138,7 @@ The mean of the steps per day, after filling NA as averages for particular inter
 The mean is exactly the same after replacing the NA with mean (which should not be a surprise). The median changed a little, by **1.1887**
 
 ## Are there differences in activity patterns between weekdays and weekends?
-Set locale to display names of the day in English and add column to the pa1_data2 with weekday as a factor
+Set locale to display names of the day in English and add column to the pa1_data2 with weekday as a factor 
 
 
 ```r
@@ -163,7 +163,7 @@ To perform summarising the data for the last graph, I use plyr library and its f
 library(plyr)
 pa1_data3 <- ddply(pa1_data2, c("Weekday", "interval"), summarise, mean_steps = mean(steps))
 g4 <- ggplot(pa1_data3, aes(x=interval, y = mean_steps)) + facet_grid(Weekday~.)
-g4 <- g4 +geom_line()
+g4 <- g4 + geom_line() + xlab("Interval")
 g4
 ```
 
